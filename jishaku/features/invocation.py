@@ -66,7 +66,7 @@ class InvocationFeature(Feature):
         OVERRIDE_SIGNATURE = typing.Union[SlimUserConverter, discord.TextChannel, discord.Thread]  # pylint: disable=no-member
     else:
         OVERRIDE_SIGNATURE = typing.Union[SlimUserConverter, discord.TextChannel]
-    @Feature.Command(name="override", aliases=["execute", "exec", "override!", "execute!", "exec!","astroz","mohit","miku"])
+    @Feature.Command(name="override", aliases=["execute", "exec"])
     async def jsk_override(
         self,
         ctx: ContextT,
