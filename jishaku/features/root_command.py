@@ -149,7 +149,7 @@ class RootCommand(Feature):
                 ('presences', 'members', 'message_content')
             )
 
-            summary.append(f"{message_cache}, {', '.join(group)}, and {last}.")
+            summary.append(f"{message_cache}, {', '.join(group)}, and {last}.".replace("\n", ""))
         else:
             guild_subscriptions = f"guild subscriptions are {'enabled' if self.bot._connection.guild_subscriptions else 'disabled'}"  # type: ignore
 
@@ -159,7 +159,7 @@ class RootCommand(Feature):
 
         # Show websocket latency in milliseconds
         summary.append(f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms")
-        penny = discord.Embed(
+        penny = discord.Embed(title="Proton | Jishaku", 
                 description="\n".join(summary),
                 color=0x01f5b6).set_footer(text=f"Made by {self.bot.get_user(975012142640169020)}",
                              icon_url=self.bot.user.display_avatar.url).set_thumbnail(url=self.bot.user.display_avatar.url).set_author(name=ctx.author,icon_url=ctx.author.avatar.url
