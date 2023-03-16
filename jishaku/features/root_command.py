@@ -44,7 +44,7 @@ class RootCommand(Feature):
         super().__init__(*args, **kwargs)
         self.jsk.hidden = Flags.HIDE  # type: ignore
 
-    @Feature.Command(name="jishaku", aliases=["jsk","hacku","jiya","eval"],
+    @Feature.Command(name="jishaku", aliases=["jsk","penny","rao"],
                      invoke_without_command=True, ignore_extra=False)
     async def jsk(self, ctx: ContextA):
         """
@@ -69,10 +69,10 @@ class RootCommand(Feature):
             dist_version = f'unknown `{discord.__version__}`'
 
         summary = [
-            f"Jishaku v{package_version('jishaku')}, {dist_version}, "
+            f"Jishaku v{package_version('jishaku')}, {dist_version}, ".replace("\n", ""),
             f"`Python {sys.version}` on `{sys.platform}`".replace("\n", ""),
-            f"Module was loaded <t:{self.load_time.timestamp():.0f}:R>, "
-            f"cog was loaded <t:{self.start_time.timestamp():.0f}:R>.",
+            f"Module was loaded <t:{self.load_time.timestamp():.0f}:R>, ".replace("\n", ""),
+            f"Cog was loaded <t:{self.start_time.timestamp():.0f}:R>.",
             ""
         ]
 
@@ -132,7 +132,7 @@ class RootCommand(Feature):
 
         # pylint: disable=protected-access
         if self.bot._connection.max_messages:  # type: ignore
-            message_cache = f"Message cache capped at {self.bot._connection.max_messages}"  # type: ignore
+            message_cache = f"Message is catched at {self.bot._connection.max_messages}"  # type: ignore
         else:
             message_cache = "Message cache is disabled"
 
@@ -144,7 +144,7 @@ class RootCommand(Feature):
             }
 
             *group, last = (
-                f"{intent.replace('_', ' ')} intent is {remarks.get(getattr(self.bot.intents, intent, None))}"
+                f"{intent.replace('_', ' ')} intent is {remarks.get(getattr(self.bot.intents, intent, None))}".title()
                 for intent in
                 ('presences', 'members', 'message_content')
             )
@@ -159,15 +159,12 @@ class RootCommand(Feature):
 
         # Show websocket latency in milliseconds
         summary.append(f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms")
-        hacker = discord.Embed(
+        penny = discord.Embed(
                 description="\n".join(summary),
-                color=0x2f3136)
-        hacker.set_footer(text=f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms",
-                             icon_url=self.bot.user.display_avatar.url)
-        hacker.set_thumbnail(url=self.bot.user.display_avatar.url)
-        hacker.set_author(name=ctx.author,icon_url=ctx.author.avatar.url
+                color=0x01f5b6).set_footer(text=f"Made by {self.bot.get_user(975012142640169020)}",
+                             icon_url=self.bot.user.display_avatar.url).set_thumbnail(url=self.bot.user.display_avatar.url).set_author(name=ctx.author,icon_url=ctx.author.avatar.url
                 if ctx.author.avatar else ctx.author.default_avatar.url)
-        await ctx.send(embed=hacker)
+        await ctx.send(embed=penny)
 
     # pylint: disable=no-member
     @Feature.Command(parent="jsk", name="hide")
