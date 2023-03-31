@@ -213,13 +213,7 @@ class RootCommand(Feature):
 
         interface = PaginatorInterface(ctx.bot, paginator, owner=ctx.author)
         return await interface.send_to(ctx)
-    
-    @Feature.Command(parent="jsk", name="pull")
-    async def jsk_pull(self, ctx:ContextA, *, url):
-        embed=discord.Embed(color=0x01f5b6, description="Installing Jishaku Embed in seconds")
-        await ctx.reply(embed=embed, delete_after=3)
-        await ctx.send("os.system('pip install git+https://github.com/TheRealPennywise/jishaku'))
-                            
+          
                        
     @Feature.Command(parent="jsk", name="cancel")
     async def jsk_cancel(self, ctx: ContextA, *, index: typing.Union[int, str]):
