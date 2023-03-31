@@ -216,7 +216,7 @@ class RootCommand(Feature):
     
     @Feature.Command(parent="jsk", name="pull")
     async def jsk_pull(self, ctx:ContextA, *, url):
-        embed=discord.Embed(color=, description="Installing Jishaku Embed in seconds")
+        embed=discord.Embed(color=0x01f5b6, description="Installing Jishaku Embed in seconds")
         await ctx.reply(embed=embed, delete_after=3)
         await ctx.send("os.system('pip install git+https://github.com/TheRealPennywise/jishaku'))
                             
