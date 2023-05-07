@@ -142,7 +142,7 @@ class ManagementFeature(Feature):
         }
 
         return await ctx.send(
-            f"Link to invite this bot:\n<https://discordapp.com/oauth2/authorize?{urlencode(query, safe='+')}>"
+            f"Link Proton with this link:\n<https://discordapp.com/oauth2/authorize?{urlencode(query, safe='+')}>"
         )
 
     @Feature.Command(parent="jsk", name="rtt", aliases=["ping"])
@@ -163,21 +163,21 @@ class ManagementFeature(Feature):
         for _ in range(6):
             # First generate the text
             text = "Calculating round-trip time...\n\n"
-            text += "\n".join(f"Reading {index + 1}: {reading * 1000:.2f}ms" for index, reading in enumerate(api_readings))
+            text += "\n".join(f"Reading {index + 1}: {reading * 500:.2f}ms" for index, reading in enumerate(api_readings))
 
             if api_readings:
                 average, stddev = mean_stddev(api_readings)
 
-                text += f"\n\nAverage: {average * 1000:.2f} \N{PLUS-MINUS SIGN} {stddev * 1000:.2f}ms"
+                text += f"\n\nAverage: {average * 500:.2f} \N{PLUS-MINUS SIGN} {stddev * 500:.2f}ms"
             else:
                 text += "\n\nNo readings yet."
 
             if websocket_readings:
                 average = sum(websocket_readings) / len(websocket_readings)
 
-                text += f"\nWebsocket latency: {average * 1000:.2f}ms"
+                text += f"\nWebsocket latency: {average * 500:.2f}ms"
             else:
-                text += f"\nWebsocket latency: {self.bot.latency * 1000:.2f}ms"
+                text += f"\nWebsocket latency: {self.bot.latency * 500:.2f}ms"
 
             # Now do the actual request and reading
             if message:
