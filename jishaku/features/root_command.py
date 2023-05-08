@@ -159,9 +159,9 @@ class RootCommand(Feature):
 
         # Show websocket latency in milliseconds
         summary.append(f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms")
-        penny = discord.Embed(title="Proton | Jishaku", 
+        penny = discord.Embed(title="Ventura | Jishaku", 
                 description="\n".join(summary),
-                color=0x01f5b6).set_footer(text=f"Made by {self.bot.get_user(975012142640169020)}",
+                color=0x030404).set_footer(text=f"Made by {self.bot.get_user(218151216650256384)}",
                              icon_url=self.bot.user.display_avatar.url).set_thumbnail(url=self.bot.user.display_avatar.url).set_author(name=ctx.author,icon_url=ctx.author.avatar.url
                 if ctx.author.avatar else ctx.author.default_avatar.url)
         await ctx.send(embed=penny)
