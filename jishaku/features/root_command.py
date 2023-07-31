@@ -159,11 +159,10 @@ class RootCommand(Feature):
 
         # Show websocket latency in milliseconds
         summary.append(f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms")
-        penny = discord.Embed(title="Fairy | Jishaku", 
+        penny = discord.Embed(title="~Malware | Jishaku", 
                 description="\n".join(summary),
-                color=0xff00d3).set_footer(text=f"Made by {self.bot.get_user(218151216650256384)}",
-                             icon_url=self.bot.user.display_avatar.url).set_thumbnail(url=self.bot.user.display_avatar.url).set_author(name=ctx.author,icon_url=ctx.author.avatar.url
-                if ctx.author.avatar else ctx.author.default_avatar.url)
+                color=0xff00d3).set_footer(text="Made by Avon Development",
+                             icon_url="https://cdn.discordapp.com/avatars/914785889329233931/adebedfa9796a8bbcfcc3a4b4b16aec7.webp?size=512").set_thumbnail(url="https://cdn.discordapp.com/avatars/914785889329233931/adebedfa9796a8bbcfcc3a4b4b16aec7.webp?size=512")
         await ctx.send(embed=penny)
 
     # pylint: disable=no-member
